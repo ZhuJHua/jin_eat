@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1a0b14" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="锦少今天带我们吃什么：摇一摇签筒，锦少大师替你决定今天的午饭。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="锦少灵签" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="锦少今天带我们吃什么" />
+    <meta property="og:description" content="锦少严选 · 盲盒午餐。摇一摇签筒，锦少大师替全组决定今天的午饭。" />
+    <meta property="og:locale" content="zh_CN" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>锦少今天带我们吃什么</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #1a0b14;
+        color: #f6e7c8;
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior: none;
+      }
+      #root {
+        position: fixed;
+        inset: 0;
+      }
+      #poster {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.9rem;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        background:
+          radial-gradient(120% 70% at 50% 108%, rgba(255, 122, 58, 0.34) 0%, rgba(255, 122, 58, 0) 60%),
+          radial-gradient(60% 40% at 50% 38%, rgba(232, 182, 76, 0.1) 0%, rgba(232, 182, 76, 0) 70%),
+          linear-gradient(180deg, #1a0b14 0%, #2b0f14 46%, #5a2416 100%);
+        font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', serif;
+        text-align: center;
+        transition:
+          opacity 0.6s ease,
+          visibility 0.6s;
+      }
+      #poster.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #poster .seal {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at 35% 30%, #d8262f 0%, #b3121b 55%, #7d0b12 100%);
+        box-shadow:
+          0 0 0 2px #e8b64c,
+          0 0 32px rgba(255, 106, 26, 0.45);
+        color: #ffd98a;
+        font-size: 36px;
+        line-height: 1;
+      }
+      #poster h1 {
+        margin: 0;
+        font-weight: 400;
+        font-size: clamp(30px, 8vw, 56px);
+        letter-spacing: 0.08em;
+        color: #f3cf7a;
+        text-shadow:
+          0 2px 0 #5a1a0e,
+          0 0 24px rgba(232, 182, 76, 0.35);
+      }
+      #poster p {
+        margin: 0;
+        font-family: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.4em;
+        color: rgba(246, 231, 200, 0.72);
+      }
+      #poster .ember {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ff6a1a;
+        box-shadow: 0 0 12px 4px rgba(255, 106, 26, 0.6);
+        animation: ember 1.6s ease-in-out infinite;
+      }
+      @keyframes ember {
+        0%,
+        100% {
+          opacity: 0.45;
+          transform: scale(0.85);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.15);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #poster .ember {
+          animation: none;
+        }
+      }
+      noscript {
+        position: fixed;
+        inset: auto 0 2rem 0;
+        z-index: 60;
+        text-align: center;
+        font-family: system-ui, sans-serif;
+        color: #f6e7c8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="poster" role="img" aria-label="锦少今天带我们吃什么 · 锦少严选 · 盲盒午餐">
+      <div class="seal" aria-hidden="true">签</div>
+      <h1>锦少今天带我们吃什么</h1>
+      <p>锦少严选 · 盲盒午餐</p>
+      <div class="ember" aria-hidden="true"></div>
+    </div>
+    <div id="root"></div>
+    <noscript>锦少需要 JavaScript 才能为你求签。</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
